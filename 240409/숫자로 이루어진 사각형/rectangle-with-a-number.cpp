@@ -6,7 +6,7 @@ int main() {
     int N;
     cin >> N;
 
-    int num = 0;
+    int num = 1;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             cout << num % 10 << " ";
