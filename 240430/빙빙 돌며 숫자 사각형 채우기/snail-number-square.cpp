@@ -11,7 +11,7 @@ int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 
 bool isRange(int x, int y) {
-    return x >= 0 && x < col && y >= 0 && y < row;
+    return x >= 0 && x < row && y >= 0 && y < col;
 }
 
 int main() {
