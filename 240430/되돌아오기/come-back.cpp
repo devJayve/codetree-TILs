@@ -47,8 +47,6 @@ int main() {
         }
     }
 
-    cout << cnt;
-
     if (x == 0 && y == 0) {
         cout << cnt;
     } else {
