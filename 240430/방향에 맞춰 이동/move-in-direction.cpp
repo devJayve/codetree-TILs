@@ -18,12 +18,6 @@ int changeDirectionNumber(string value) {
     return -1;
 }
 
-void move(int* x, int* y, int direction) {
-    *x = 
-    *x,*y = *x + dx[direction], *y + dy[direction];
-    cout << *x << " " << *y << endl;
-}
-
 int main() {
     int N;
     int x,y = 0;
