@@ -40,10 +40,10 @@ int main() {
         x = 0; y = (point % n);
         dir = 1;
     } else if (point / n == 1) {
-        x= (point % n); y = n;
+        x= (point % n); y = n-1;
         dir = 0;
     } else if (point / n == 2) {
-        x = n; y = (point % n);
+        x = n-1; y = (point % n);
         dir = 2;
     } else {
         x = (point % n); y = 0;
