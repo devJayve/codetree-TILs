@@ -6,7 +6,7 @@ using namespace std;
 
 char arr[MAX_LEN][MAX_LEN];
 
-int dx[DIR_LEN] = {0,-1,1,0}; 
+int dx[DIR_LEN] = {0,-1,1,0};
 int dy[DIR_LEN] = {1,0,0,-1};
 
 int replace1[DIR_LEN] = {2,3,0,1};
@@ -37,16 +37,16 @@ int main() {
     int x,y;
 
     if (point / n == 0) {
-        x = 0, y = point;
-        dir = 1;    
+        x = 0; y = point;
+        dir = 1;
     } else if (point / n == 1) {
-        x= point, y = n;
+        x= point; y = n;
         dir = 0;
     } else if (point / n == 2) {
-        x = n, y = point;
+        x = n; y = point;
         dir = 2;
-    } else if (point / n == 3) {
-        x = point, y = 0;
+    } else {
+        x = point; y = 0;
         dir = 3;
     }
 
@@ -61,7 +61,7 @@ int main() {
         int nx = x + dx[dir], ny = y + dy[dir];
         // cout << nx << " " << ny << " " << dir << endl;
         if (!isRange(nx, ny)) break;
-        x = x + dx[dir], y = y + dy[dir];
+        x = x + dx[dir]; y = y + dy[dir];
         cnt++;
         // dir을 반대편 dir로 전환
 
