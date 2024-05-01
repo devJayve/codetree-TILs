@@ -50,7 +50,7 @@ int main() {
         dir = 3;
     }
 
-    // cout << x << " " << y << " " << dir << endl;
+//     cout << x << " " << y << " " << dir << endl;
     for (int i = 0; i < n*n; i++) {
         // dir 반사
         if (arr[x][y] == '/') {
@@ -59,7 +59,7 @@ int main() {
             dir = replace2[dir];
         }
         int nx = x + dx[dir], ny = y + dy[dir];
-        // cout << nx << " " << ny << " " << dir << endl;
+//         cout << nx << " " << ny << " " << dir << endl;
         if (!isRange(nx, ny)) break;
         x = x + dx[dir]; y = y + dy[dir];
         cnt++;
