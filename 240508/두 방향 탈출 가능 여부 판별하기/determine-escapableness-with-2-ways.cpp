@@ -45,6 +45,10 @@ int main() {
         for (int j = 0; j < n; j++)
             cin >> arr[i][j];
 
+
+    answer[0][0] = order++;
+    visited[0][0] = 1;
+    
     DFS(0,0);
 
     cout << (answer[n-1][m-1] > 0) ? 1 : 0;
