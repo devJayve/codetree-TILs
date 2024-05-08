@@ -47,7 +47,7 @@ int main() {
 
     DFS(0,0);
 
-    cout << answer[n-1][m-1];
+    cout << (answer[n-1][m-1] > 0) ? 1 : 0;
     
     return 0;
 }
