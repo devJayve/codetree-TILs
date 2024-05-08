@@ -42,13 +42,13 @@ int main() {
     cin >> n >> m;
 
     for (int i = 0; i <n; i++)
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < m; j++)
             cin >> arr[i][j];
 
 
     answer[0][0] = order++;
     visited[0][0] = 1;
-    
+
     DFS(0,0);
 
     cout << (answer[n-1][m-1] > 0) ? 1 : 0;
