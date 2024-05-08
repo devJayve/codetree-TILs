@@ -7,10 +7,10 @@ int arr[MAX_LEN][MAX_LEN];
 int answer[MAX_LEN][MAX_LEN];
 int visited[MAX_LEN][MAX_LEN];
 int order = 1;
-int n;
+int n, m;
 
 bool InRange(int x, int y) {
-    return 0 <= x && x < n && 0 <= y && y < n;
+    return 0 <= x && x < n && 0 <= y && y < m;
 }
 
 bool CanGo(int x, int y) {
@@ -38,7 +38,8 @@ void DFS(int x, int y) {
 }
 
 int main() {
-    cin >> n;
+
+    cin >> n >> m;
 
     for (int i = 0; i <n; i++)
         for (int j = 0; j < n; j++)
@@ -46,7 +47,7 @@ int main() {
 
     DFS(0,0);
 
-    cout << answer[n-1][n-1];
+    cout << answer[n-1][m-1];
     
     return 0;
 }
