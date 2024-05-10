@@ -3,11 +3,12 @@
 using namespace std;
 
 #define MAX_LEN 1000
+#define MAX_EDGE_LEN 10000
 
 int graph[MAX_LEN+1][MAX_LEN+1];
 bool visited[MAX_LEN+1];
-int start_points[MAX_LEN];
-int end_points[MAX_LEN];
+int start_points[MAX_EDGE_LEN];
+int end_points[MAX_EDGE_LEN];
 
 int n, m;
 
