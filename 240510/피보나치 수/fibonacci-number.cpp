@@ -30,18 +30,21 @@ int Fibo(int n) {
         return memo[n];
     }
     if (n <= 2) {
-        return memo[n];
+        memo[n] = 1;
     }
-    if (memo[n] == -1) {
-        return Fibo(n-1) + Fibo(n-2);
+    else {
+        memo[n] = Fibo(n-1) + Fibo(n-2);
     }
+    return memo[n];
 }
 
 int main() {
-    memo[1] = 1;
-    memo[2] = 1;
-    
     int n;
     cin >> n;
-    cout <<Fibo(n);
+
+    for (int i = 1; i <= n; i++) {
+        memo[i] = -1;
+    }
+    
+    cout << Fibo(n);
 }
