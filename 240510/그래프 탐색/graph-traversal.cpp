@@ -4,8 +4,8 @@ using namespace std;
 
 #define MAX_LEN 1000
 
-int graph[MAX_LEN][MAX_LEN];
-bool visited[MAX_LEN];
+int graph[MAX_LEN+1][MAX_LEN+1];
+bool visited[MAX_LEN+1];
 int start_points[MAX_LEN];
 int end_points[MAX_LEN];
 
