@@ -4,6 +4,7 @@ using namespace std;
 #define MAX_LEN 45
 
 int arr[MAX_LEN];
+int memo[MAX_LEN];
 
 //  tabulation
 // int main() {
@@ -25,15 +26,21 @@ int arr[MAX_LEN];
 // recursion + memoization
 
 int Fibo(int n) {
-    if (n <= 2) {
-        return 1;
+    if (memo[n] != -1) {
+        return memo[n];
     }
-    else {
+    if (n <= 2) {
+        return memo[n];
+    }
+    if (memo[n] == -1) {
         return Fibo(n-1) + Fibo(n-2);
     }
-
 }
+
 int main() {
+    memo[1] = 1;
+    memo[2] = 1;
+    
     int n;
     cin >> n;
     cout <<Fibo(n);
