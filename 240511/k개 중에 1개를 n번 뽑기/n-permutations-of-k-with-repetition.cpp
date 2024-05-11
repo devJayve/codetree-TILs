@@ -14,12 +14,12 @@ void print() {
 }
 
 void choose(int curr_num) {
-    if (curr_num == k+1) {
+    if (curr_num == n+1) {
         print();
         return;
     }
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= k; i++) {
         answer.push_back(i);
         choose(curr_num+1);
         answer.pop_back();
