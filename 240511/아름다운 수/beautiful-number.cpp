@@ -34,9 +34,10 @@ void print() {
         }
     }
 
-    // for (int i = 0; i < answer.size(); i++) {
-    //     answer[i]
-    // }
+    for (int i = 0; i < answer.size(); i++) {
+        cout <<  answer[i] << " ";
+    }
+    cout << endl;
 
     cnt++;
 }
@@ -57,7 +58,11 @@ int main() {
 
     cin >> n;
 
-    choose(1);
+    if (n == 1) {
+        cnt++;
+    } else {
+        choose(1);
+    }
 
     cout << cnt;
     
