@@ -7,6 +7,14 @@ vector<int> ans;
 int n, k;
 
 void print() {
+    if (n >= 3) {
+        for (int i = 0; i < ans.size() -2; i++) {
+        if (ans[i] == ans[i+1] && ans[i+1] == ans[i+2]) {       
+            return;
+        }
+    }
+    }
+
     for (int i = 0; i < ans.size(); i++) {
         cout << ans[i] << " ";
     }
