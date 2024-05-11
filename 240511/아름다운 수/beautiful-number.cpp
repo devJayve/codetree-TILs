@@ -8,38 +8,29 @@ int n;
 
 int cnt = 0;
 
-// 333
-// 122
-// 221
-// 111
-void print() {
-    int tmp = answer[0];
-    int tmp_count = 1;
-
-    for (int i = 0; i < answer.size() -1; i++) {
-        if (answer[i] == answer[i+1]) {
-            tmp_count++;
-            if (i == answer.size() - 2 && tmp_count % tmp != 0) {
-                return;
-            }
-        } else {
-            if (tmp_count % tmp != 0) {
-                return;
-            }
-            tmp = answer[i+1];
-            tmp_count = 1;
-            if (i == answer.size() - 2 && tmp_count % tmp != 0) {
-                return;
+bool isBeautiful() {
+    for (int i = 0; i < n; i += answer[i]) {
+        if (i + answer[i] - 1 >= n) {
+            return false;
+        }
+        
+        for (int j = i; j < answer[i] + i; j++) {
+            if (answer[i] != answer[j]) {
+                return false;
             }
         }
     }
-
-    // for (int i = 0; i < answer.size(); i++) {
-    //     cout <<  answer[i] << " ";
+    // for (int i = 0; i < n; i++) {
+    //     cout << answer[i] << " ";
     // }
     // cout << endl;
+    return true;
 
-    cnt++;
+}
+void print() {
+    if (isBeautiful()) {
+        cnt++;
+    }
 }
 
 void choose(int curr_num) {
@@ -58,12 +49,8 @@ int main() {
 
     cin >> n;
 
-    if (n == 1) {
-        cnt++;
-    } else {
-        choose(1);
-    }
-
+    choose(1);
+    
     cout << cnt;
     
     return 0;
