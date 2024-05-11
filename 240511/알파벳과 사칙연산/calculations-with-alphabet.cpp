@@ -9,7 +9,7 @@ int alpha_memo[220];
 
 string input;
 
-int ans = 0;
+int ans = -10000000;
 
 void caculate() {
     char tmp_oper = 'A';
