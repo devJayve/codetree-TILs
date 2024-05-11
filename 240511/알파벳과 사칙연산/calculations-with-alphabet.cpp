@@ -3,71 +3,92 @@
 #include <string>
 using namespace std;
 
-vector<char> seq;
-vector<int> ans;
+#define MAX_LEN 101
 
-int ans_num = 0;
+vector<char> oper_v;
+vector<int> num_v;
+
+int ori_oper[MAX_LEN];
+int ori_char[MAX_LEN];
+int alpha_memo[220];
+
+string input;
+
+int ans = 0;
 
 void caculate() {
-    // for (int i = 0; i < ans.size(); i++) {
-    //     cout << ans[i];
-    // }
-    // cout << endl;
-    
-    int tmp = ans[0];
+    char tmp_oper = 'A';
+    int tmp_num = num_v[0];
+    int num_iter = 1;
 
-    if (seq.size() != 1) {
-        for (int i = 2; i < seq.size(); i+=2) {
-            // cout << ans[i-2] << endl;
-            if (seq[i-1] == '+') {
-                tmp = tmp + ans[i/2];
-            } else if (seq[i-1] == '-') {
-                tmp = tmp - ans[i/2];
-            } else if (seq[i-1] == '*') {
-                tmp = tmp * ans[i/2];
+    for (int i = 1; i < input.size(); i++) {
+        if (i % 2) {
+            tmp_oper = input[i];
+        }
+        else {
+            if (tmp_oper == '-') {
+                tmp_num -= num_v[num_iter];    
             }
+            else if (tmp_oper == '+') {
+                tmp_num += num_v[num_iter];    
+            }
+            else if (tmp_oper == '*') {
+                tmp_num *= num_v[num_iter];    
+            }
+            num_iter++;
         }
     }
-    
 
-//     for (int i = 0; i < ans.size(); i++) {
-//         cout << ans[i] << " ";
-//    }
-//    cout << endl;
-    // cout << tmp << endl;
-
-   ans_num = max(tmp, ans_num);
+    ans = max(ans, tmp_num);   
 }
 
-void choose(int curr_num) {
-    if (curr_num == ((seq.size() -1)/2) + 2) {
+void backTracking(int curr_num) {
+    if (curr_num == input.size()) {
         caculate();
         return;
     }
-    for (int i = 1; i <=4; i++) {
-        ans.push_back(i);
-        choose(curr_num+1);
-        ans.pop_back();
-    }
 
+    if (curr_num % 2) { // operator
+        backTracking(curr_num+1);
+    } else { // number
+        if (alpha_memo[input[curr_num]] == 0) {
+            
+            for (int i = 1; i <= 4; i++) {
+                alpha_memo[input[curr_num]] = i;
+                num_v.push_back(i);
+
+                backTracking(curr_num+1);
+
+                alpha_memo[input[curr_num]] = 0;
+                num_v.pop_back();
+            }
+        } else {
+            num_v.push_back(alpha_memo[input[curr_num]]);
+            
+            backTracking(curr_num + 1);
+
+            num_v.pop_back();
+        }
+    }
 }
 
-int main() {
-    string exp;
-    cin >> exp;
 
-    for (int i = 0; i < exp.size(); i++) {
-        seq.push_back(exp[i]);
+
+int main() {
+    cin >> input;
+
+    for (int i = 0; i < input.size(); i++) {
+        if (i % 2) {
+            ori_oper[i] = input[i];
+        }
     }
 
-//     for (int i = 0; i < seq.size(); i++) {
-//         cout << seq[i] << " ";
-//    }
+    for (int i = 'a' - '0'; i < 'g'- '0'; i++) {
+        alpha_memo[i] = 0;
+    }
 
-    choose(1);
-    
-    cout << ans_num;
-    
-    
+    backTracking(0);
+
+    cout << ans;
     return 0;
 }
