@@ -3,13 +3,8 @@
 #include <string>
 using namespace std;
 
-#define MAX_LEN 101
-
-vector<char> oper_v;
 vector<int> num_v;
 
-int ori_oper[MAX_LEN];
-int ori_char[MAX_LEN];
 int alpha_memo[220];
 
 string input;
@@ -76,12 +71,6 @@ void backTracking(int curr_num) {
 
 int main() {
     cin >> input;
-
-    for (int i = 0; i < input.size(); i++) {
-        if (i % 2) {
-            ori_oper[i] = input[i];
-        }
-    }
 
     for (int i = 'a' - '0'; i < 'g'- '0'; i++) {
         alpha_memo[i] = 0;
