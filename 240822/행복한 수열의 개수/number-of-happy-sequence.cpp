@@ -6,6 +6,7 @@ int arr[N][N];
 int m,n;
 
 bool isHappyNumsFromCol(int x) {
+    if (m == 1) return true;
     int contiCount = 0;
     int lastValue = -1;
     
@@ -23,6 +24,7 @@ bool isHappyNumsFromCol(int x) {
 }
 
 bool isHappyNumsFromRow(int y) {
+    if (m == 1) return true;
     int contiCount = 0;
     int lastValue = -1;
     
