@@ -32,13 +32,15 @@ int main() {
     // 두 번째 블럭에 대한 합
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (j+2 < n)
-            {
-                int sum = arr[i][j] + arr[i][j+1] + arr[i][j+2];
+            // 세로 블럭
+            if (i+2 < n) {
+                int sum = arr[i][j] + arr[i+1][j] + arr[i+2][j];
                 maxSum = max(sum, maxSum);
             }
-            if (i+2 < m) {
-                int sum = arr[i][j] + arr[i+1][j] + arr[i+2][j];
+            // 가로 블럭
+            if (j+2 < m)
+            {
+                int sum = arr[i][j] + arr[i][j+1] + arr[i][j+2];
                 maxSum = max(sum, maxSum);
             }
         }
