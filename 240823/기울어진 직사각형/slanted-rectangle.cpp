@@ -56,26 +56,28 @@ int getMoveSum(int x, int y) {
             }
             
             
+            
             // 각각 동일한 횟수로 3,4번 방향으로 이동 가능한지 확인
+            if (!isAvailableRange(curX + dx[2] * i, curY + dy[2] * i)) continue;
             for (int l = 0; l < i; l++) {
-                if (!isAvailableRange(curX + dx[2], curY + dy[2])) goto endOfLoop;
                 curX += dx[2];
                 curY += dy[2];
                 sum += arr[curX][curY];
             }
+            
+            if (!isAvailableRange(curX + dx[3] * j, curY + dy[3] * j)) continue;
             for (int k = 0; k < j; k++) {
-                if (!isAvailableRange(curX + dx[3], curY + dy[3])) goto endOfLoop;
                 curX += dx[3];
                 curY += dy[3];
                 sum += arr[curX][curY];
             }
+            
             maxSum = max(sum, maxSum);
 //            if (sum == 40) {
 //                cout << "position" << x <<  " " << y  << " " << i << endl;
 //            }
         }
     }
-    endOfLoop:
 
     return maxSum;
 }
