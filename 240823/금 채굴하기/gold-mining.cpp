@@ -12,11 +12,11 @@ int getGold(int x, int y, int K) {
         for (int j = y-i; j <= y+i; j++) {
             if (j < 0 || j >= n) continue;
             if (x+i-K < 0 || x+i-K >= n) continue;
-            if (x-i+K < 0 || x-i+K >= n) continue;
             if (!found[x+i-K][j] && arr[x+i-K][j] == 1) {
                 goldCnt++;
                 found[x+i-K][j] = 1;
             }
+            if (x-i+K < 0 || x-i+K >= n) continue;
             if (!found[x-i+K][j] && arr[x-i+K][j] == 1) {
                 goldCnt++;
                 found[x-i+K][j] = 1;
