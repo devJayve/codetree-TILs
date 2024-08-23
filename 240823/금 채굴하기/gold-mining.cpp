@@ -10,7 +10,9 @@ int getGold(int x, int y, int K) {
     int goldCnt = 0;
     for (int i = 0; i < K+1; i++) {
         for (int j = y-i; j <= y+i; j++) {
-            if (x+i-K < 0 || x+i-K >= n || j < 0 || j >= n) continue;
+            if (j < 0 || j >= n) continue;
+            if (x+i-K < 0 || x+i-K >= n) continue;
+            if (x-i+K < 0 || x-i+K >= n) continue;
             if (!found[x+i-K][j] && arr[x+i-K][j] == 1) {
                 goldCnt++;
                 found[x+i-K][j] = 1;
