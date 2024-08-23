@@ -50,9 +50,6 @@ int main() {
                 initializeFound();
                 int goldCnt = getGold(i, j , K);
                 int totalCost = (goldCnt * m) - ((K * K) + ((K+1) * (K+1)));
-                if (K == 10) {
-                    cout << i << " " << j << " K: " << K << " " << goldCnt << " " << totalCost << endl;
-                }
                 if (totalCost >= 0) {
                     goldMaxCnt = max(goldCnt, goldMaxCnt);
                 }
