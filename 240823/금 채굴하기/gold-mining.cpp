@@ -8,9 +8,9 @@ int n, m; // n = 정사각형 크기, m = 금 한개의 가격
 
 int getGold(int x, int y, int K) {
     int goldCnt = 0;
-    for (int i = 0; i < K; i++) {
+    for (int i = 0; i < K+1; i++) {
         for (int j = y-i; j <= y+1; j++) {
-            if (x+i-K < 0 || x+i-K >= n || j < 0 || j >= n) continue;
+//            if (x+i-K < 0 || x+i-K >= n || j < 0 || j >= n) continue;
             if (!found[x+i-K][j] && arr[x+i-K][j] == 1) {
                 goldCnt++;
                 found[x+i-K][j] = 1;
@@ -26,8 +26,8 @@ int getGold(int x, int y, int K) {
 
 
 void initializeFound() {
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
+    for (int i = 0; i < 20; i++)
+        for (int j = 0; j < 20; j++)
             found[i][j]= false;
 }
 
@@ -41,7 +41,7 @@ int main() {
     
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            for (int K = 0; K < n; K++) {
+            for (int K = 0; K <= 2*n-1; K++) {
                 initializeFound();
                 int goldCnt = getGold(i, j , K);
                 int totalCost = (goldCnt * m) - (K * K + (K+1) * (K+1));
