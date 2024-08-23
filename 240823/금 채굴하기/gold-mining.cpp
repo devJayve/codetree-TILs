@@ -11,15 +11,18 @@ int getGold(int x, int y, int K) {
     for (int i = 0; i < K+1; i++) {
         for (int j = y-i; j <= y+i; j++) {
             if (j < 0 || j >= n) continue;
-            if (x+i-K < 0 || x+i-K >= n) continue;
-            if (!found[x+i-K][j] && arr[x+i-K][j] == 1) {
-                goldCnt++;
-                found[x+i-K][j] = 1;
+            
+            if (x+i-K >= 0 && x+i-K < n) {
+                if (!found[x+i-K][j] && arr[x+i-K][j] == 1) {
+                    goldCnt++;
+                    found[x+i-K][j] = 1;
+                }
             }
-            if (x-i+K < 0 || x-i+K >= n) continue;
-            if (!found[x-i+K][j] && arr[x-i+K][j] == 1) {
-                goldCnt++;
-                found[x-i+K][j] = 1;
+            if (x-i+K >= 0 && x-i+K < n){
+                if (!found[x-i+K][j] && arr[x-i+K][j] == 1) {
+                    goldCnt++;
+                    found[x-i+K][j] = 1;
+                }
             }
         }
     }
@@ -40,13 +43,16 @@ int main() {
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             cin >> arr[i][j];
-    
+    //280
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             for (int K = 0; K <= 2*n-1; K++) {
                 initializeFound();
                 int goldCnt = getGold(i, j , K);
-                int totalCost = (goldCnt * m) - (K * K + (K+1) * (K+1));
+                int totalCost = (goldCnt * m) - ((K * K) + ((K+1) * (K+1)));
+                if (K == 10) {
+                    cout << i << " " << j << " K: " << K << " " << goldCnt << " " << totalCost << endl;
+                }
                 if (totalCost >= 0) {
                     goldMaxCnt = max(goldCnt, goldMaxCnt);
                 }
