@@ -29,12 +29,12 @@ int main() {
     }
     
     for (int i = 0; i < n; i++) {
-        cout << arr[i];
+        cout << arr[i] << " ";
     }
     cout << endl;
     
     for (int i = n; i < 2*n; i++) {
-        cout << arr[i];
+        cout << arr[i] << " ";;
     }
     
     
