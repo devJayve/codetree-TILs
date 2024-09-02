@@ -41,7 +41,6 @@ void rotateCounterClockWise() {
     
     for (int i = 3; i >= 0; i--) {
         int idx = (i+2)%4;
-        cout << idx << endl;
         
         for (int j = 0; j < m[i]; j++) {
             arr[x][y] = arr[x+dx[idx]][y+dy[idx]];
