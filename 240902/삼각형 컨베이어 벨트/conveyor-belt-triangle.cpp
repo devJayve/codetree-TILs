@@ -36,6 +36,8 @@ int main() {
     
     t %= n*3;
     
+    moveArr();
+    
     printMatrix();
     
     return 0;
