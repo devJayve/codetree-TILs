@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #define MAX 10
+#define MAX_LEN 20
 using namespace std;
 
 string A;
@@ -41,7 +42,7 @@ int encode(string str) {
 }
 
 int main() {
-    int minLen = MAX;
+    int minLen = MAX_LEN;
     cin >> A;
     
     
