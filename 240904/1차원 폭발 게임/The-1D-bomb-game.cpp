@@ -16,7 +16,9 @@ void removeExplosion() {
     for (int i = 1; i < total_bomb_cnt; i++) {
         if (arr[i] != arr[i-1]) {
             if (bomb_cnt < M) {
-                tmp[tmp_idx++] = arr[i-1];
+                for (int j = 0; j < bomb_cnt; j++) {
+                    tmp[tmp_idx++] = arr[i-bomb_cnt+j];
+                }
             } else {
                 isExplosion = true;
             }
