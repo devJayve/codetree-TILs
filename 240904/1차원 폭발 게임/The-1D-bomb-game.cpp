@@ -30,7 +30,9 @@ void removeExplosion() {
     
     // 마지막 인덱스 확인
     if (bomb_cnt < M) {
-        tmp[tmp_idx++] = arr[total_bomb_cnt-1];
+        for (int j = 0; j < bomb_cnt; j++) {
+            tmp[tmp_idx++] = arr[total_bomb_cnt-1-bomb_cnt+j];
+        }
     }
     
     for (int i = 0; i < tmp_idx; i++) {
