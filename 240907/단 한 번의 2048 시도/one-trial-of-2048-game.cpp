@@ -25,9 +25,15 @@ void move() {
         for (int j = row; j >= 1; j--) {
             if (arr[i][j] != 0) {
                 tmp[i][row] = arr[i][j];
-                if (j-1 >= 1 && arr[i][j] == arr[i][j-1]) {
-                    tmp[i][row] *= 2; 
-                     j--;
+                for (int k = 1; j-k >= 1; k++) {
+                    if (arr[i][j-k] == 0) continue;
+                    
+                    if (arr[i][j] == arr[i][j-k]) {
+                        tmp[i][row] *= 2;
+                        j -= k;
+                    }
+                    
+                    break;
                 }
                 row--;
             }
