@@ -2,7 +2,7 @@
 #include <vector>
 #include <tuple>
 #include <queue>
-#define MAX 100
+#define MAX 20000
 using namespace std;
 
 vector<pair<int, int>> graph[MAX + 1];
