@@ -25,7 +25,7 @@ void dijkstra(int s, int t, int n, const vector<pair<int,int>> (&graph)[MAX_N + 
         
         min_dist = -min_dist;
         
-        if (dist[min_index] != min_dist)
+        if (dist[min_index] > min_dist)
             continue;
         
         for (int i = 0; i < graph[min_index].size(); i++) {
@@ -59,6 +59,7 @@ int main() {
         cin >> a >> b >> d;
         
         graph[a].push_back(make_pair(b, d));
+        graph[b].push_back(make_pair(a, d));
     }
     
     cin >> s >> t;
