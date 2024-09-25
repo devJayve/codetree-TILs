@@ -68,11 +68,11 @@ int main() {
     
     cout << dist[t] << '\n';
     
-    int x = 5;
+    int x = t;
     vector<int> vertices;
     vertices.push_back(x);
     
-    while (x != 1) {
+    while (x != s) {
         vertices.push_back(path[x]);
         x = path[x];
     }
