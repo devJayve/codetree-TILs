@@ -72,7 +72,6 @@ int main() {
             graph[current_station].push_back(make_tuple(next_station, fee, i));
             current_station = next_station;
         }
-        
     }
     
     dijkstra(A, MAX_N, graph, dist, path);
@@ -83,11 +82,13 @@ int main() {
         cout << dist[B] << " ";
         
         int x = B;
+//        cout << x << " ";
         int time = 0;
         
         while(x != A) {
             time++;
             x = path[x];
+//            cout << x << " ";
         }
         
         cout << time;
