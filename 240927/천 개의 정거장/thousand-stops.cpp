@@ -74,7 +74,7 @@ int main() {
         }
     }
     
-    dijkstra(A, MAX_N, graph, dist, path);
+    dijkstra(A, MAX_N + 1, graph, dist, path);
     
     if (dist[B] == (int)1e9) {
         cout << "-1 -1";
