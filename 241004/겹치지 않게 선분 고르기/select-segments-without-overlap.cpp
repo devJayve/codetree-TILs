@@ -26,7 +26,7 @@ int count_line() {
         tie(cur_x1, cur_x2) = pq.top();
         pq.pop();
         
-        if (cur_x2 >= x2) return -1;
+        if (cur_x2 >= x1) return -1;
         
         x1 = cur_x1; x2 = cur_x2;
     }
