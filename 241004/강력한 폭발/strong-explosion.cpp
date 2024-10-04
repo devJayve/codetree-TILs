@@ -31,7 +31,7 @@ bool isInRange(int x, int y) {
 void countBomb() {
     int ans = 0;
 
-    for (int i = 0; i < bomb_loc.size(); i++) {
+    for (int i = 0; i < (int)bomb_loc.size(); i++) {
         int x,y;
         int cur_x, cur_y;
         
@@ -64,7 +64,7 @@ void makeBomb(int cur_bomb) {
         return;
     }
     
-    for (int i = 1; i <= 3; i++) {
+    for (int i = 0; i < 3; i++) {
         bomb_num.push_back(i);
         makeBomb(cur_bomb + 1);
         bomb_num.pop_back();
@@ -87,7 +87,6 @@ int main() {
     makeBomb(0);
     
     cout << max_cnt;
-    
     
     return 0;
 }
