@@ -5,7 +5,7 @@
 #define MAX_N 500
 using namespace std;
 
-bool visited[MAX_N];
+bool visited[MAX_N + 1];
 
 void prim(vector<pair<int,int>> (&graph)[MAX_N + 1],
           int (&dist)[MAX_N + 1],
@@ -25,7 +25,7 @@ void prim(vector<pair<int,int>> (&graph)[MAX_N + 1],
         tie(min_dist, min_index) = pq.top();
         pq.pop();
         
-        // if (visited[min_index]) continue;
+        if (visited[min_index]) continue;
         
         visited[min_index] = true;
         
@@ -33,7 +33,7 @@ void prim(vector<pair<int,int>> (&graph)[MAX_N + 1],
             int target_index, target_dist;
             tie(target_index, target_dist) = graph[min_index][i];
             
-            if (target_dist < dist[target_index]) {
+            if (target_dist < dist[target_index] && !visited[target_index]) {
                 dist[target_index] = target_dist;
                 pq.push(make_pair(-target_dist, target_index));
             }
@@ -61,6 +61,7 @@ int main() {
     
     int ans = 0;
     for (int i = 1; i <= n; i++) {
+//        cout << dist[i] << " ";
         ans += dist[i];
     }
     
