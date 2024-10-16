@@ -7,8 +7,8 @@ using namespace std;
 
 bool visited[MAX_N];
 
-void prim(vector<pair<int,int>> (&graph)[MAX_N],
-          int (&dist)[MAX_N],
+void prim(vector<pair<int,int>> (&graph)[MAX_N + 1],
+          int (&dist)[MAX_N + 1],
           int N
           ) {
     priority_queue<pair<int,int>> pq = priority_queue<pair<int,int>>();
@@ -46,8 +46,8 @@ int main() {
     int x, y, w;
     
     priority_queue<pair<int,int>> pq = priority_queue<pair<int,int>>();
-    vector<pair<int,int>> graph[MAX_N];
-    int dist[MAX_N];
+    vector<pair<int,int>> graph[MAX_N + 1];
+    int dist[MAX_N + 1];
     
     cin >> n >> m;
     
