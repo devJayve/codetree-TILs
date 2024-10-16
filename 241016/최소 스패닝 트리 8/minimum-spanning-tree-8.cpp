@@ -25,7 +25,7 @@ void prim(vector<pair<int,int>> (&graph)[MAX_N + 1],
         tie(min_dist, min_index) = pq.top();
         pq.pop();
         
-        if (visited[min_index]) continue;
+        // if (visited[min_index]) continue;
         
         visited[min_index] = true;
         
