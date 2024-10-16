@@ -33,7 +33,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         cin >> mode >> a >> b;
         if (mode) { // mode = 1
-            cout << (arr[a] == arr[b]) << '\n';
+            cout << (find(a) == find(b)) << '\n';
         } else { // mode = 0
             union_set(a, b);
         }
