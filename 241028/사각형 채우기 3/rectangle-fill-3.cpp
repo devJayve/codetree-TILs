@@ -10,7 +10,7 @@ long long fillRect(int N) {
     dp[3] = 22;
     
     for (int i = 4; i <= N; i++) {
-        dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
+        dp[i] = dp[i-1] * 3 - 1;
         dp[i] %= DIV;
     }
     
