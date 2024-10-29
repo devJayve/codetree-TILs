@@ -14,13 +14,15 @@ bool isCanGo(int x, int y) {
 }
 
 void dfs(int x, int y) {
-    if (x == N-1 && y == M-1) {
-        isReachEnd = true;
-        return;
-    }
     for (int i = 0; i < 2; i++) {
         int new_x = x + dir_x[i];
         int new_y = y + dir_y[i];
+        
+        if (new_x == N-1 && new_y == M-1) {
+            isReachEnd = true;
+            return;
+        }
+        
         if (isCanGo(new_x, new_y)) {
             dfs(new_x, new_y);
         }
