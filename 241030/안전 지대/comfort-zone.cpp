@@ -40,7 +40,7 @@ int main() {
             cin >> grid[i][j];
     
     
-    int max_cnt = 0;
+    int max_cnt = -1;
     int max_k = 0;
     
     for (int k = 1; k < 100; k++) {
