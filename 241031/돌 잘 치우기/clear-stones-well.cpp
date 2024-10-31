@@ -37,10 +37,10 @@ int bfs(int start_x, int start_y) {
         tie(weight, x, y) = pq.top();
         pq.pop();
         
+        if (visited[x][y]) continue;
         if (grid[x][y] && M == 0) continue;
         if (grid[x][y]) M--;
         
-        if (visited[x][y]) continue;
         visited[x][y] = true;
         visit_cnt++;
 //        cout << x << " " << y << '\n';
