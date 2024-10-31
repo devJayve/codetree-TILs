@@ -12,7 +12,7 @@ int dir_x[4] = {0, 1, 0, -1};
 int dir_y[4] = {1, 0, -1, 0};
 
 bool isCanGo(int x, int y) {
-    return (!visited[x][y] && grid[x][y] && x >= 0 && x < N && y >= 0 && y < M);
+    return (x >= 0 && x < N && y >= 0 && y < M) && !visited[x][y] && grid[x][y];
 }
 
 int bfs() {
@@ -49,7 +49,7 @@ int main() {
     cin >> N >> M;
     
     for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < M; j++)
             cin >> grid[i][j];
     
     int ans = bfs();
