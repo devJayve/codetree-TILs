@@ -14,12 +14,23 @@ bool isCanGo(int x, int y, bool (&visited)[MAX_N + 1][MAX_N + 1]) {
     return (x > 0 && x <= N && y > 0 && y <= N && !visited[x][y]);
 }
 
+int calPriority(int x, int y, bool (&visited)[MAX_N + 1][MAX_N + 1]) {
+    int ans = 0;
+    for (int i = 0; i < 4; i++) {
+        int new_x = x + dir_x[i];
+        int new_y = y + dir_y[i];
+        if (isCanGo(new_x, new_y, visited) && !grid[new_x][new_y])
+            ans++;
+    }
+    return ans;
+}
+
 int bfs(int start_x, int start_y, int m) {
     priority_queue<tuple<int,int,int>> pq = priority_queue<tuple<int,int,int>>();
     bool visited[MAX_N + 1][MAX_N + 1] = {false, };
     int visit_cnt = 0;
     
-    pq.push(make_tuple(-grid[start_x][start_y], start_x, start_y));
+    pq.push(make_tuple(5, start_x, start_y));
     
     while (!pq.empty()) {
         int weight, x, y;
@@ -32,12 +43,15 @@ int bfs(int start_x, int start_y, int m) {
         if (visited[x][y]) continue;
         visited[x][y] = true;
         visit_cnt++;
+//        cout << x << " " << y << '\n';
         
         for (int i = 0; i < 4; i++) {
             int new_x = x + dir_x[i];
             int new_y = y + dir_y[i];
             if (isCanGo(new_x, new_y, visited)) {
-                pq.push(make_tuple(-grid[new_x][new_y], new_x, new_y));
+                int weight = 5;
+                if (grid[new_x][new_y]) weight = calPriority(new_x, new_y, visited);
+                pq.push(make_tuple(weight, new_x, new_y));
             }
         }
     }
