@@ -46,6 +46,8 @@ pair<int,int> bfs(int start_x, int start_y) {
         }
     }
     
+    if (ans.empty()) return make_pair(x, y);
+    
     int ans_weight, ans_x, ans_y;
     tie(ans_weight, ans_x, ans_y) = ans.top();
     return make_pair(-ans_x, -ans_y);
