@@ -43,7 +43,9 @@ bool isAroundIce(int x, int y) {
 
 int bfs(int x, int y) {
     queue<tuple<int,int,int>> q = queue<tuple<int,int,int>>();
+    queue<pair<int,int>> track = queue<pair<int,int>>();
     q.push(make_tuple(grid[x][y], x, y));
+    
     int melt_cnt = 0;
     
     while(!q.empty()) {
@@ -57,6 +59,7 @@ int bfs(int x, int y) {
         if (is_ice) {
             ans[x][y] = 0;
             melt_cnt++;
+            track.push(make_pair(x, y));
         }
         visited[x][y] = true;
         
@@ -67,6 +70,14 @@ int bfs(int x, int y) {
                 q.push(make_tuple(grid[new_x][new_y], new_x, new_y));
             }
         }
+    }
+    
+    while (!track.empty()) {
+        int x, y;
+        tie(x, y) = track.front();
+        track.pop();
+        
+        visited[x][y] = false;
     }
     
     for (int i = 0; i < N; i++)
