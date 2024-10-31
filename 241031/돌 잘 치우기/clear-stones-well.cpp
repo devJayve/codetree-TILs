@@ -5,29 +5,29 @@
 #define MAX_N 100
 using namespace std;
 
-int N;
+int N, M;
 int grid[MAX_N+1][MAX_N+1];
 int dir_x[4] = {0,1,0,-1};
 int dir_y[4] = {1,0,-1,0};
+bool visited[MAX_N + 1][MAX_N + 1];
 
-bool isCanGo(int x, int y, bool (&visited)[MAX_N + 1][MAX_N + 1]) {
+bool isCanGo(int x, int y) {
     return (x > 0 && x <= N && y > 0 && y <= N && !visited[x][y]);
 }
 
-int calPriority(int x, int y, bool (&visited)[MAX_N + 1][MAX_N + 1]) {
+int calPriority(int x, int y) {
     int ans = 0;
     for (int i = 0; i < 4; i++) {
         int new_x = x + dir_x[i];
         int new_y = y + dir_y[i];
-        if (isCanGo(new_x, new_y, visited) && !grid[new_x][new_y])
+        if (isCanGo(new_x, new_y) && !grid[new_x][new_y])
             ans++;
     }
     return ans;
 }
 
-int bfs(int start_x, int start_y, int m) {
+int bfs(int start_x, int start_y) {
     priority_queue<tuple<int,int,int>> pq = priority_queue<tuple<int,int,int>>();
-    bool visited[MAX_N + 1][MAX_N + 1] = {false, };
     int visit_cnt = 0;
     
     pq.push(make_tuple(5, start_x, start_y));
@@ -37,8 +37,8 @@ int bfs(int start_x, int start_y, int m) {
         tie(weight, x, y) = pq.top();
         pq.pop();
         
-        if (grid[x][y] && m == 0) continue;
-        if (grid[x][y]) m--;
+        if (grid[x][y] && M == 0) continue;
+        if (grid[x][y]) M--;
         
         if (visited[x][y]) continue;
         visited[x][y] = true;
@@ -48,9 +48,9 @@ int bfs(int start_x, int start_y, int m) {
         for (int i = 0; i < 4; i++) {
             int new_x = x + dir_x[i];
             int new_y = y + dir_y[i];
-            if (isCanGo(new_x, new_y, visited)) {
+            if (isCanGo(new_x, new_y)) {
                 int weight = 5;
-                if (grid[new_x][new_y]) weight = calPriority(new_x, new_y, visited);
+                if (grid[new_x][new_y]) weight = calPriority(new_x, new_y);
                 pq.push(make_tuple(weight, new_x, new_y));
             }
         }
@@ -60,7 +60,7 @@ int bfs(int start_x, int start_y, int m) {
 }
 
 int main() {
-    int K, M;
+    int K;
     int x, y;
     int ans = 0;
     
@@ -72,8 +72,8 @@ int main() {
     
     for (int i = 0; i < K; i++) {
         cin >> x >> y;
-        int res = bfs(x, y, M);
-        ans = max(ans, res);
+        int res = bfs(x, y);
+        ans += res;
     }
     
     cout << ans;
