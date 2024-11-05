@@ -22,13 +22,12 @@ int bfs(int x, int y, bool (&visited)[MAX_N][MAX_N]) {
     
     q.push(make_pair(x, y));
     visited[x][y] = true;
+    move_cnt++;
     
     while (!q.empty()) {
         int cur_x, cur_y;
         tie(cur_x, cur_y) = q.front();
         q.pop();
-        
-        move_cnt++;
         
         for (int i =0; i < 4; i++) {
             int new_x = cur_x + dir_x[i];
@@ -38,6 +37,7 @@ int bfs(int x, int y, bool (&visited)[MAX_N][MAX_N]) {
             if (isCanGo(new_x, new_y, dist) && !visited[new_x][new_y]) {
                 q.push(make_pair(new_x, new_y));
                 visited[new_x][new_y] = true;
+                move_cnt++;
             }
         }
     }
@@ -56,7 +56,6 @@ int countCnt(int x, int y, int limit) {
             limit--;
         }
     }
-    if (limit != 0) return -1;
     return cnt;
 }
 
