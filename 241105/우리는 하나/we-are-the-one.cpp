@@ -32,8 +32,7 @@ int bfs(int x, int y, bool (&visited)[MAX_N][MAX_N]) {
         for (int i =0; i < 4; i++) {
             int new_x = cur_x + dir_x[i];
             int new_y = cur_y + dir_y[i];
-            int dist = grid[cur_x][cur_y] - grid[new_x][new_y];
-            if (dist < 0) dist = -dist;
+            int dist = abs(grid[cur_x][cur_y] - grid[new_x][new_y]);
             if (isCanGo(new_x, new_y, dist) && !visited[new_x][new_y]) {
                 q.push(make_pair(new_x, new_y));
                 visited[new_x][new_y] = true;
@@ -46,8 +45,9 @@ int bfs(int x, int y, bool (&visited)[MAX_N][MAX_N]) {
 }
 
 int countCnt(int x, int y, int limit) {
-    bool visited[MAX_N][MAX_N] = {false, };
+    bool visited[MAX_N][MAX_N] = {false};
     int cnt = 0;
+    
     for (int i = x % n; i < n + x; i++) {
         for (int j = y % n; j < n + y; j++) {
             if (limit == 0) break;
@@ -56,6 +56,7 @@ int countCnt(int x, int y, int limit) {
             limit--;
         }
     }
+    
     return cnt;
 }
 
