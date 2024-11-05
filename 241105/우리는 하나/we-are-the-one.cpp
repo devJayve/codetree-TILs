@@ -56,6 +56,7 @@ int countCnt(int x, int y, int limit) {
             limit--;
         }
     }
+    if (limit != 0) return -1;
     return cnt;
 }
 
