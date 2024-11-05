@@ -48,8 +48,8 @@ int bfs(int x, int y, bool (&visited)[MAX_N][MAX_N]) {
 int countCnt(int x, int y, int limit) {
     bool visited[MAX_N][MAX_N] = {false, };
     int cnt = 0;
-    for (int i = x; i < n; i++) {
-        for (int j = y; j < n; j++) {
+    for (int i = x % n; i < n + x; i++) {
+        for (int j = y % n; j < n + y; j++) {
             if (limit == 0) break;
             if (visited[i][j]) continue;
             cnt += bfs(i, j, visited);
