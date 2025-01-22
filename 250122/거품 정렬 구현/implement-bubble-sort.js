@@ -15,7 +15,5 @@ for (let i = 0; i < arr.length; i++) {
     }
 }
 
-
-
-const answer = arr.map(String).join(' ');
+const answer = arr.join(' ');
 console.log(answer);
