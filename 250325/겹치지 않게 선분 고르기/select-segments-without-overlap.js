@@ -53,6 +53,7 @@ function checkIsOverlap() {
         if (line1[1] >= fullLine[i][0]) return true;
         line1 = fullLine[i];
     }
+
     return false;
 }
 
