@@ -13,9 +13,9 @@ function caculateScore() {
 }
 
 function makeMoveOrder(cnt) {
+    maxScore = Math.max(maxScore, caculateScore());
+
     if (cnt === n) {
-        const score = caculateScore();
-        maxScore = Math.max(score, maxScore);
         return;
     }
 
