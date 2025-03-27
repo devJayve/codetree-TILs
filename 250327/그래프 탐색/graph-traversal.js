@@ -8,8 +8,8 @@ for (let i = 1; i <= m; i++) {
 }
 
 
-const graph = Array.from(Array(1000), () => Array());
-const visited = Array(1000).fill(false);
+const graph = Array.from(Array(1001), () => Array());
+const visited = Array(1001).fill(false);
 
 edges.forEach(([x, y]) => {
     graph[x].push(y);
